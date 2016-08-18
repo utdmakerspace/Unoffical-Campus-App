@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" Title="Login Page" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Makerspace.LoginPage">
+
+	<ContentPage.Content>
+		<TableView Intent="Form">
+    <TableRoot>
+        <TableSection Title="Login Form">
+		<ViewCell Height="50" >
+                <StackLayout Orientation="Horizontal" Spacing="5" Padding="10,5,10,5">
+					<Label Text="Password" VerticalOptions="CenterAndExpand"/>
+                    <Entry x:Name="passwordForm" IsPassword="true"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="Black" Completed="Handle_Completed" />
+                </StackLayout>
+          	 </ViewCell>
+		</TableSection>
+    </TableRoot>
+</TableView>
+		
+	</ContentPage.Content>
+</ContentPage>

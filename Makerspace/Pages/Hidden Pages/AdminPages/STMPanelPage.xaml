@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Makerspace.STMPanelPage">
+	<ContentPage.Content>
+			<TableView x:Name="infotable" Intent="Settings" HasUnevenRows="true">
+    <TableRoot>
+				
+		<TableSection Title = "STM Details">
+			<EntryCell x:Name="NameEntry" Label="Your Name: " LabelColor="Black" />
+		</TableSection>
+
+		<TableSection Title = "Message">
+			<ViewCell Height="200" >
+                <StackLayout Orientation="Vertical" Spacing="2">
+                    <Editor x:Name="messageEditor" VerticalOptions="FillAndExpand" TextColor="Black" />
+                </StackLayout>
+          	 </ViewCell>
+		</TableSection>
+				
+		<TableSection Title = "STM Commands">
+			<ImageCell x:Name="CheckInTab" TextColor="Black" Text="Check in!"/>
+			<ImageCell x:Name="NotifyTab" TextColor="Black" Text="Can't make it" />
+		</TableSection>
+    </TableRoot>
+</TableView>
+	</ContentPage.Content>
+</ContentPage>

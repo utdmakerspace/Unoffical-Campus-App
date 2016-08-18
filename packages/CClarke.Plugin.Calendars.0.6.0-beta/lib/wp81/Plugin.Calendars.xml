@@ -1,0 +1,190 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Plugin.Calendars</name>
+    </assembly>
+    <members>
+        <member name="T:Plugin.Calendars.CrossCalendars">
+            <summary>
+            Cross platform Calendars implemenations
+            </summary>
+        </member>
+        <member name="P:Plugin.Calendars.CrossCalendars.Current">
+            <summary>
+            Current settings to use
+            </summary>
+        </member>
+        <member name="T:Plugin.Calendars.AppointmentCalendarExtensions">
+            <summary>
+            AppointmentCalendar extensions
+            </summary>
+        </member>
+        <member name="M:Plugin.Calendars.AppointmentCalendarExtensions.ToCalendar(Windows.ApplicationModel.Appointments.AppointmentCalendar,System.Boolean)">
+            <summary>
+            Creates a new Calendars.Plugin.Abstractions.Calendar from an AppointmentCalendar
+            </summary>
+            <param name="apptCalendar">Source AppointmentCalendar</param>
+            <param name="writeable">Whether or not the calendar is writeable (this isn't part of AppointmentCalendar)</param>
+            <returns>Corresponding Calendars.Plugin.Abstractions.Calendar</returns>
+        </member>
+        <member name="T:Plugin.Calendars.AppointmentExtensions">
+            <summary>
+            Appointment extensions
+            </summary>
+        </member>
+        <member name="M:Plugin.Calendars.AppointmentExtensions.ToCalendarEvent(Windows.ApplicationModel.Appointments.Appointment)">
+            <summary>
+            Creates a new Calendars.Plugin.Abstractions.CalendarEvent from an Appointment
+            </summary>
+            <param name="appt">Source Appointment</param>
+            <returns>Corresponding Calendars.Plugin.Abstractions.CalendarEvent</returns>
+        </member>
+        <member name="T:Plugin.Calendars.CalendarsImplementation">
+            <summary>
+            Implementation for Calendars
+            </summary>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.GetCalendarsAsync">
+            <summary>
+            Gets a list of all calendars on the device.
+            </summary>
+            <returns>Calendars</returns>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.GetCalendarByIdAsync(System.String)">
+            <summary>
+            Gets a single calendar by platform-specific ID.
+            </summary>
+            <param name="externalId">Platform-specific calendar identifier</param>
+            <returns>The corresponding calendar, or null if not found</returns>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.GetEventsAsync(Plugin.Calendars.Abstractions.Calendar,System.DateTime,System.DateTime)">
+            <summary>
+            Gets all events for a calendar within the specified time range.
+            </summary>
+            <param name="calendar">Calendar containing events</param>
+            <param name="start">Start of event range</param>
+            <param name="end">End of event range</param>
+            <returns>Calendar events</returns>
+            <exception cref="T:System.ArgumentException">Calendar does not exist on device</exception>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.GetEventByIdAsync(System.String)">
+            <summary>
+            Gets a single calendar event by platform-specific ID.
+            </summary>
+            <param name="externalId">Platform-specific calendar event identifier</param>
+            <returns>The corresponding calendar event, or null if not found</returns>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.AddOrUpdateCalendarAsync(Plugin.Calendars.Abstractions.Calendar)">
+            <summary>
+            Creates a new calendar or updates the name and color of an existing one.
+            </summary>
+            <param name="calendar">The calendar to create/update</param>
+            <exception cref="T:System.ArgumentException">Calendar does not exist on device or is read-only</exception>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.AddOrUpdateEventAsync(Plugin.Calendars.Abstractions.Calendar,Plugin.Calendars.Abstractions.CalendarEvent)">
+            <summary>
+            Add new event to a calendar or update an existing event.
+            Throws if Calendar ID is empty, calendar does not exist, or calendar is read-only.
+            </summary>
+            <param name="calendar">Destination calendar</param>
+            <param name="calendarEvent">Event to add or update</param>
+            <exception cref="T:System.ArgumentException">Calendar is not specified, does not exist on device, or is read-only</exception>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.AddEventReminderAsync(Plugin.Calendars.Abstractions.CalendarEvent,Plugin.Calendars.Abstractions.CalendarEventReminder)">
+            <summary>
+            Sets/replaces the event reminder for the specified calendar event
+            </summary>
+            <param name="calendarEvent">Event to add the reminder to</param>
+            <param name="reminder">The reminder</param>
+            <returns>If successful</returns>
+            <exception cref="T:System.ArgumentException">Calendar event is not created or not valid</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.DeleteCalendarAsync(Plugin.Calendars.Abstractions.Calendar)">
+            <summary>
+            Removes a calendar and all its events from the system.
+            </summary>
+            <param name="calendar">Calendar to delete</param>
+            <returns>True if successfully removed</returns>
+            <exception cref="T:System.ArgumentException">Calendar is read-only</exception>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.DeleteEventAsync(Plugin.Calendars.Abstractions.Calendar,Plugin.Calendars.Abstractions.CalendarEvent)">
+            <summary>
+            Removes an event from the specified calendar.
+            </summary>
+            <param name="calendar">Calendar to remove event from</param>
+            <param name="calendarEvent">Event to remove</param>
+            <returns>True if successfully removed</returns>
+            <exception cref="T:System.ArgumentException">Calendar is read-only</exception>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.GetAndValidateLocalCalendarAsync(System.String)">
+            <summary>
+            The main purpose of this is just to throw an appropriate exception on failure.
+            </summary>
+            <param name="id">Local calendar ID</param>
+            <returns>App calendar with write access (will not return null)</returns>
+            <exception cref="T:System.ArgumentException">Calendar ID does not refer to an app-owned calendar</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.GetLocalCalendarAsync(System.String)">
+            <summary>
+            This is to handle a difference in the behavior of Windows UWP and WinPhone 8.1.
+            On UWP, GetAppointmentCalendarAsync for a store created with AppCalendarsReadWrite
+            access will still return non-app calendars that the app does not have write access
+            to. FindAppointmentCalendarsAsync, however, does still respect the access type,
+            so we just iterate.
+            </summary>
+            <remarks>
+            Trying to save changes to the calendar would have thrown an appropriate
+            UnauthorizedAccessException, but that would be inconsistent with our
+            behavior on other platforms and wouldn't help with setting the
+            CanEditCalendar/CanEditEvents properties.
+            </remarks>
+            <param name="id">Local calendar ID</param>
+            <returns>App calendar with write access, or null if not found.</returns>
+        </member>
+        <member name="T:Plugin.Calendars.IAsyncActionExtensions">
+            <summary>
+            IAsyncAction extensions
+            </summary>
+        </member>
+        <member name="M:Plugin.Calendars.IAsyncActionExtensions.ConfigureAwait(Windows.Foundation.IAsyncAction,System.Boolean)">
+            <summary>
+            Enables Task's ConfigureAwait for IAsyncActions
+            </summary>
+            <param name="action">Source IAsyncAction</param>
+            <param name="continueOnCapturedContext">true to attempt to marshal the continuation back to the original context
+                                                    captured; otherwise, false.</param>
+            <returns>An object used to await this IAsyncAction</returns>
+        </member>
+        <member name="T:Plugin.Calendars.IAsyncOperationExtensions">
+            <summary>
+            IAsyncOperation extensions
+            </summary>
+        </member>
+        <member name="M:Plugin.Calendars.IAsyncOperationExtensions.ConfigureAwait``1(Windows.Foundation.IAsyncOperation{``0},System.Boolean)">
+            <summary>
+            Enables Task's ConfigureAwait for IAsyncOperations
+            </summary>
+            <param name="op">Source IAsyncOperation</param>
+            <param name="continueOnCapturedContext">true to attempt to marshal the continuation back to the original context
+                                                    captured; otherwise, false.</param>
+            <returns>An object used to await this IAsyncOperation</returns>
+        </member>
+    </members>
+</doc>

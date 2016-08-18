@@ -1,0 +1,244 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Plugin.Calendars</name>
+    </assembly>
+    <members>
+        <member name="T:Plugin.Calendars.CalendarsImplementation">
+            <summary>
+            Implementation for Calendars
+            </summary>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.GetCalendarsAsync">
+            <summary>
+            Gets a list of all calendars on the device.
+            </summary>
+            <returns>Calendars</returns>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.GetCalendarByIdAsync(System.String)">
+            <summary>
+            Gets a single calendar by platform-specific ID.
+            </summary>
+            <param name="externalId">Platform-specific calendar identifier</param>
+            <returns>The corresponding calendar, or null if not found</returns>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.GetEventsAsync(Plugin.Calendars.Abstractions.Calendar,System.DateTime,System.DateTime)">
+            <summary>
+            Gets all events for a calendar within the specified time range.
+            </summary>
+            <param name="calendar">Calendar containing events</param>
+            <param name="start">Start of event range</param>
+            <param name="end">End of event range</param>
+            <returns>Calendar events</returns>
+            <exception cref="T:System.ArgumentException">Calendar does not exist on device</exception>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.GetEventByIdAsync(System.String)">
+            <summary>
+            Gets a single calendar event by platform-specific ID.
+            </summary>
+            <param name="externalId">Platform-specific calendar event identifier</param>
+            <returns>The corresponding calendar event, or null if not found</returns>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.AddOrUpdateCalendarAsync(Plugin.Calendars.Abstractions.Calendar)">
+            <summary>
+            Creates a new calendar or updates the name and color of an existing one.
+            </summary>
+            <param name="calendar">The calendar to create/update</param>
+            <exception cref="T:System.ArgumentException">Calendar does not exist on device or is read-only</exception>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:System.InvalidOperationException">No active calendar sources available to create calendar on.</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.AddOrUpdateEventAsync(Plugin.Calendars.Abstractions.Calendar,Plugin.Calendars.Abstractions.CalendarEvent)">
+            <summary>
+            Add new event to a calendar or update an existing event.
+            Throws if Calendar ID is empty, calendar does not exist, or calendar is read-only.
+            </summary>
+            <param name="calendar">Destination calendar</param>
+            <param name="calendarEvent">Event to add or update</param>
+            <exception cref="T:System.ArgumentException">Calendar is not specified, does not exist on device, or is read-only</exception>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.AddEventReminderAsync(Plugin.Calendars.Abstractions.CalendarEvent,Plugin.Calendars.Abstractions.CalendarEventReminder)">
+            <summary>
+            Adds an event reminder to specified calendar event
+            </summary>
+            <param name="calendarEvent">Event to add the reminder to</param>
+            <param name="reminder">The reminder</param>
+            <returns>If successful</returns>
+            <exception cref="T:System.ArgumentException">Calendar event is not created or not valid</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.DeleteCalendarAsync(Plugin.Calendars.Abstractions.Calendar)">
+            <summary>
+            Removes a calendar and all its events from the system.
+            </summary>
+            <param name="calendar">Calendar to delete</param>
+            <returns>True if successfully removed</returns>
+            <exception cref="T:System.ArgumentException">Calendar is read-only</exception>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.DeleteEventAsync(Plugin.Calendars.Abstractions.Calendar,Plugin.Calendars.Abstractions.CalendarEvent)">
+            <summary>
+            Removes an event from the specified calendar.
+            </summary>
+            <param name="calendar">Calendar to remove event from</param>
+            <param name="calendarEvent">Event to remove</param>
+            <returns>True if successfully removed</returns>
+            <exception cref="T:System.ArgumentException">Calendar is read-only</exception>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.SaveEKCalendar(MonoTouch.EventKit.EKSource,System.String,System.String)">
+            <summary>
+            Tries to create a new calendar with the specified source/name/color.
+            May fail depending on source.
+            </summary>
+            <remarks>
+            This is only intended as a helper method for CreateEKCalendar,
+            not to be called independently.
+            </remarks>
+            <returns>The created native calendar, or null on failure</returns>
+            <param name="source">Calendar source (e.g. iCloud vs local vs gmail)</param>
+            <param name="calendarName">Calendar name.</param>
+            <param name="color">Calendar color.</param>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.SaveEKCalendar(System.Collections.Generic.IEnumerable{MonoTouch.EventKit.EKSource},System.String,System.String,System.Boolean)">
+            <summary>
+            Tries creating the specified calendar with each provided source in sequence,
+            returning the first successfully-created calendar (or null on failure).
+            </summary>
+            <returns>The created native calendar, or null on failure.</returns>
+            <param name="sources">Possible calendar sources to try</param>
+            <param name="calendarName">Calendar name.</param>
+            <param name="color">Calendar color.</param>
+            <param name="allowEmptySources">Whether to include empty sources (sources that currently lack calendars).</param>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.CreateEKCalendar(System.String,System.String)">
+            <summary>
+            Creates a new calendar.
+            </summary>
+            <remarks>
+            This crazy series of loops and save attempts is necessary because it is difficult
+            to determine which EKSource we should use for a new calendar.
+            1. If iCloud calendars are enabled, then local device calendars will be hidden from
+               the user (and from our own GetCalendars requests), even though they still exist on device.
+               Therefore we must create new calendars with the iCloud source.
+            2. If iCloud calendars are *not* enabled, then the opposite is true and we should go local.
+            3. It is difficult to identify the iCloud EKSource(s?) and to even determine if iCloud
+               is enabled.
+               a. By default, the name is "iCloud." Most of the time, that will be unchanged and
+                  should be an effective way to locate an/the iCloud source.
+               b. However, it *might* have changed. iOS previously allowed the user to rename it in
+                  Settings. They removed that setting, but users may have already changed it.
+                  Additionally, some users have discovered elaborate workarounds to change it in
+                  newer versions. Because, you know, Apple took away their setting and they wanted it back.
+                  So, if we don't find any "iCloud" sources, we fall back to searching for any
+                  CalDav sources.
+                  - This does mean that we may try storing calendars to non-iCloud CalDav sources,
+                    such as Gmail. Gmail is expected to fail, which is fine and we just keep searching.
+                    Uncertain if there are other possible CalDav sources that could *succeed* and
+                    that we would want to avoid.
+               c. Also, the mere existence of the iCloud source does not necessarily prove that
+                  iCloud calendar sync is currently enabled. Turning iCloud calendars on and off
+                  may leave the source in the event store even though it's disabled. So we also
+                  check that there exists at least one calendar for that source.
+               d. We do not know if we can save to a calendar source until we actually try to do
+                  so. Hence the repeated save attempts.
+            
+            Full lengthy discussion at https://github.com/TheAlmightyBob/Calendars/issues/10
+            </remarks>
+            <returns>The new native calendar.</returns>
+            <param name="calendarName">Calendar name.</param>
+            <param name="color">Calendar color.</param>
+            <exception cref="T:System.InvalidOperationException">No active calendar sources available to create calendar on.</exception>
+        </member>
+        <member name="T:Plugin.Calendars.ColorConversion">
+            <summary>
+            iOS color conversion helpers
+            </summary>
+        </member>
+        <member name="M:Plugin.Calendars.ColorConversion.ToCGColor(System.String)">
+            <summary>
+            Creates a CGColor from a hex color string
+            </summary>
+            <param name="hexColor">Color string, in the hex form "#AARRGGBB"</param>
+            <returns>Corresponding CGColor, or null if conversion failed</returns>
+        </member>
+        <member name="M:Plugin.Calendars.ColorConversion.ToHexColor(MonoTouch.CoreGraphics.CGColor)">
+            <summary>
+            Creates a hex color string from a CGColor
+            </summary>
+            <param name="cgColor">The CGColor to stringify</param>
+            <returns>Corresponding color string, in the hex form "#AARRGGBB"</returns>
+        </member>
+        <member name="T:Plugin.Calendars.DateConversionExtensions">
+            <summary>
+            iOS date conversion extension helpers, based on Xamarin sample for Unified migration
+            </summary>
+        </member>
+        <member name="M:Plugin.Calendars.DateConversionExtensions.ToDateTime(MonoTouch.Foundation.NSDate)">
+            <summary>
+            Converts NSDate to System.DateTime
+            </summary>
+            <param name="date">Original NSDate</param>
+            <returns>Corresponding System.DateTime</returns>
+        </member>
+        <member name="M:Plugin.Calendars.DateConversionExtensions.ToNSDate(System.DateTime)">
+            <summary>
+            Converts System.DateTime to NSDate
+            </summary>
+            <param name="date">Original System.DateTime</param>
+            <returns>Corresponding NSDate</returns>
+        </member>
+        <member name="T:Plugin.Calendars.EKCalendarExtensions">
+            <summary>
+            iOS EKCalendar extensions
+            </summary>
+        </member>
+        <member name="M:Plugin.Calendars.EKCalendarExtensions.ToCalendar(MonoTouch.EventKit.EKCalendar)">
+            <summary>
+            Creates a new Calendars.Plugin.Abstractions.Calendar from an EKCalendar
+            </summary>
+            <param name="ekCalendar">Source EKCalendar</param>
+            <returns>Corresponding Calendars.Plugin.Abstractions.Calendar</returns>
+        </member>
+        <member name="T:Plugin.Calendars.EKEventExtensions">
+            <summary>
+            iOS EKEvent extensions
+            </summary>
+        </member>
+        <member name="M:Plugin.Calendars.EKEventExtensions.ToCalendarEvent(MonoTouch.EventKit.EKEvent)">
+            <summary>
+            Creates a new Calendars.Plugin.Abstractions.CalendarEvent from an EKEvent
+            </summary>
+            <param name="ekEvent">Source EKEvent</param>
+            <returns>Corresponding Calendars.Plugin.Abstraction.CalendarEvent</returns>
+        </member>
+        <member name="T:Plugin.Calendars.CrossCalendars">
+            <summary>
+            Cross platform Calendars implemenations
+            </summary>
+        </member>
+        <member name="P:Plugin.Calendars.CrossCalendars.Current">
+            <summary>
+            Current settings to use
+            </summary>
+        </member>
+    </members>
+</doc>

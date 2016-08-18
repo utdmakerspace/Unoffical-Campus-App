@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="Makerspace.AddEventPage"
+		xmlns:p="clr-namespace:Xamarin.Forms.Pages;assembly=Xamarin.Forms.Pages"
+		StyleClass="Events">
+	
+	<ContentPage.Content>
+			<TableView x:Name="infotable" Intent="Form" HasUnevenRows="true">
+    <TableRoot>
+		<TableSection Title = "Create New Event">
+			<EntryCell x:Name="titleEntry" Label="Title" Placeholder="Makerspace Event" />
+			<EntryCell x:Name="roomEntry" Label="Location" Placeholder="Synergy Park" />
+			<EntryCell x:Name="presenterEntry" Label="Presenter" Placeholder="Mr.X" />
+			<EntryCell x:Name="imageEntry" Label="Event Image" Placeholder="www.example.com/image.jpg" />
+			<EntryCell x:Name="themeEntry" Label="Event Color" Placeholder="#9H3838 (Default Color is Teal)" />
+		</TableSection>
+
+		<TableSection Title = "Image Preview">
+			<ViewCell Height="100">
+               <Image  BindingContext="{x:Reference Name=imageEntry}" Aspect="AspectFit" Source= "{Binding Text}" />
+           </ViewCell>
+
+			<ViewCell>
+            <p:ListItemControl 
+				BindingContext="{x:Reference Name=imageEntry}" 
+                Title="New Event Title"
+                Detail="Event Location"
+                ImageSource="{Binding Text}"
+                HeightRequest="90"	
+            >
+            </p:ListItemControl>
+						
+        </ViewCell>
+		</TableSection>
+
+
+		<TableSection Title = "Event Start Date">
+			<ViewCell>
+                <StackLayout Orientation="Horizontal">
+					<DatePicker x:Name="startDatePicker" HorizontalOptions="FillAndExpand"/>
+					<TimePicker x:Name="startTimePicker"  HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+           </ViewCell>
+		</TableSection>
+		<TableSection Title = "Event End Date">
+			<ViewCell>
+                <StackLayout Orientation="Horizontal">
+                    <DatePicker x:Name="endDatePicker" BindingContext="{x:Reference Name=startDatePicker}" Date= "{Binding Date, Mode=OneWay}" HorizontalOptions="FillAndExpand"/>
+					<TimePicker x:Name="endTimePicker" BindingContext="{x:Reference Name=startTimePicker}" Time = "{Binding Time, Mode=OneWay}" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+           </ViewCell>
+		</TableSection>
+				
+		<TableSection Title = "Presenter Biography">
+			<ViewCell Height="100" >
+                <StackLayout Orientation="Vertical" Spacing="2">
+                    <Editor x:Name="presenterEditor" VerticalOptions="FillAndExpand" />
+                </StackLayout>
+           </ViewCell>
+		</TableSection>
+		<TableSection Title = "Event Description">
+			<ViewCell Height="200" >
+                <StackLayout Orientation="Vertical" Spacing="2">
+                    <Editor x:Name="descEditor" VerticalOptions="FillAndExpand" />
+                </StackLayout>
+           </ViewCell>
+		</TableSection>
+		<TableSection>
+			<TextCell Text="Add Event!" Tapped="Handle_Tapped"/>
+		</TableSection>
+
+    </TableRoot>
+			</TableView>
+	</ContentPage.Content>
+</ContentPage>

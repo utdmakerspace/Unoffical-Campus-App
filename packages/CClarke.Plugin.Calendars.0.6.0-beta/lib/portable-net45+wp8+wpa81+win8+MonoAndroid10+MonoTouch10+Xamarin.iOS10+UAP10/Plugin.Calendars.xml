@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Plugin.Calendars</name>
+    </assembly>
+    <members>
+        <member name="T:Plugin.Calendars.CrossCalendars">
+            <summary>
+            Cross platform Calendars implemenations
+            </summary>
+        </member>
+        <member name="P:Plugin.Calendars.CrossCalendars.Current">
+            <summary>
+            Current settings to use
+            </summary>
+        </member>
+    </members>
+</doc>

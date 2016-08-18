@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="Makerspace.InfoPage"
+		Title = "Info">
+	<ContentPage.Content>
+		<TableView x:Name="infotable" Intent="Settings" HasUnevenRows="true">
+    <TableRoot>
+
+		<TableSection Title="UTD Quick Links" >
+		<!--	<ImageCell x:Name="EmergencyTab" Text="Emergency Contacts" /> -->
+			<ImageCell x:Name="DiningTab" Text="UTD Dining Times" TextColor="Gray" />
+        </TableSection>
+				
+        <TableSection Title="Makerspace Info"  >
+			<ImageCell x:Name="OfficersTab" Text="Executive Officers" TextColor="Black" />
+			<ImageCell x:Name="STMTab" Text="Student Toolshop Masters" TextColor="Black"/>
+			<ImageCell x:Name="SponsorsTab" Text="Sponsors" TextColor="Black"/>
+			<ImageCell x:Name="ContactTab" Text="Timings &amp; Contact" TextColor="Black"/>
+			<ImageCell x:Name="ConductTab" Text="Code of Conduct" TextColor="Black"/>
+					
+        </TableSection>
+
+				
+		<TableSection x:Name="AdminPanel" Title = "Admin Information">
+			<ImageCell x:Name="AdminTab" Text="Admin Login" TextColor="Black"/>
+			<ImageCell x:Name="STMLoginTab" Text="STM Login" TextColor="Black"/>
+		</TableSection>
+    </TableRoot>
+
+
+		<TableSection Title="Note">
+				<ViewCell Height="90">
+				<StackLayout Padding="10">
+						<Label VerticalOptions="CenterAndExpand" Text="If you would like to advertise your event, email utdmakerspace@gmail.com. This app is not endorsed nor sponsored by the University of Texas at Dallas." FontSize="Small"/>
+				</StackLayout>
+				</ViewCell>
+		</TableSection>
+			
+</TableView>
+		
+	</ContentPage.Content>
+</ContentPage>

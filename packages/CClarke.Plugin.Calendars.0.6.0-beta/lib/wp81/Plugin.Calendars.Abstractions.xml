@@ -1,0 +1,251 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Plugin.Calendars.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="T:Plugin.Calendars.Abstractions.Calendar">
+            <summary>
+            Device calendar abstraction
+            </summary>
+        </member>
+        <member name="P:Plugin.Calendars.Abstractions.Calendar.Name">
+            <summary>
+            Calendar display name
+            </summary>
+        </member>
+        <member name="P:Plugin.Calendars.Abstractions.Calendar.Color">
+            <summary>
+            Calendar display color, as a string in hex notation
+            </summary>
+            <remarks>Cannot be changed on WinPhone</remarks>
+        </member>
+        <member name="P:Plugin.Calendars.Abstractions.Calendar.ExternalID">
+            <summary>
+            Platform-specific unique calendar identifier
+            </summary>
+        </member>
+        <member name="P:Plugin.Calendars.Abstractions.Calendar.CanEditCalendar">
+            <summary>
+            Whether or not the calendar itself (name/color) can be edited
+            </summary>
+        </member>
+        <member name="P:Plugin.Calendars.Abstractions.Calendar.CanEditEvents">
+            <summary>
+            Whether or not events can be created/edited/deleted for the calendar
+            </summary>
+        </member>
+        <member name="T:Plugin.Calendars.Abstractions.CalendarEvent">
+            <summary>
+            Device calendar event/appointment abstraction
+            </summary>
+        </member>
+        <member name="P:Plugin.Calendars.Abstractions.CalendarEvent.Name">
+            <summary>
+            Calendar event name/title/subject
+            </summary>
+        </member>
+        <member name="P:Plugin.Calendars.Abstractions.CalendarEvent.Start">
+            <summary>
+            Event start time
+            </summary>
+        </member>
+        <member name="P:Plugin.Calendars.Abstractions.CalendarEvent.End">
+            <summary>
+            Event end time
+            </summary>
+        </member>
+        <member name="P:Plugin.Calendars.Abstractions.CalendarEvent.Location">
+            <summary>
+            Gets or sets the location of the event
+            </summary>
+        </member>
+        <member name="P:Plugin.Calendars.Abstractions.CalendarEvent.AllDay">
+            <summary>
+            Whether or not this is an "all-day" event.
+            </summary>
+            <remarks>All-day events end at midnight of the following day</remarks>
+        </member>
+        <member name="P:Plugin.Calendars.Abstractions.CalendarEvent.Description">
+            <summary>
+            Optional event description/details
+            </summary>
+        </member>
+        <member name="P:Plugin.Calendars.Abstractions.CalendarEvent.ExternalID">
+            <summary>
+            Platform-specific unique calendar event identifier
+            </summary>
+            <remarks>This ID will be the same for each instance of a recurring event.</remarks>
+        </member>
+        <member name="M:Plugin.Calendars.Abstractions.CalendarEvent.ToString">
+            <summary>
+            Simple ToString helper, to assist with debugging.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Plugin.Calendars.Abstractions.CalendarEventReminder">
+            <summary>
+            Calendar reminder that happens before the event such as an alert
+            </summary>
+        </member>
+        <member name="P:Plugin.Calendars.Abstractions.CalendarEventReminder.TimeBefore">
+            <summary>
+            Amount of time to set the reminder before the start of an event.
+            Default is 15 minutes
+            </summary>
+        </member>
+        <member name="P:Plugin.Calendars.Abstractions.CalendarEventReminder.Method">
+            <summary>
+            Type of reminder to display on Android. (not used by Windows/iOS)
+            </summary>
+        </member>
+        <member name="T:Plugin.Calendars.Abstractions.CalendarReminderMethod">
+            <summary>
+            Android reminder methods
+            </summary>
+        </member>
+        <member name="F:Plugin.Calendars.Abstractions.CalendarReminderMethod.Default">
+            <summary>
+            Use system default
+            </summary>
+        </member>
+        <member name="F:Plugin.Calendars.Abstractions.CalendarReminderMethod.Alert">
+            <summary>
+            Pop up alert
+            </summary>
+        </member>
+        <member name="F:Plugin.Calendars.Abstractions.CalendarReminderMethod.Email">
+            <summary>
+            Send an email
+            </summary>
+        </member>
+        <member name="F:Plugin.Calendars.Abstractions.CalendarReminderMethod.Sms">
+            <summary>
+            Send an sms
+            </summary>
+        </member>
+        <member name="T:Plugin.Calendars.Abstractions.ICalendars">
+            <summary>
+            Interface for Calendars
+            </summary>
+        </member>
+        <member name="M:Plugin.Calendars.Abstractions.ICalendars.GetCalendarsAsync">
+            <summary>
+            Gets a list of all calendars on the device.
+            </summary>
+            <returns>Calendars</returns>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.Abstractions.ICalendars.GetCalendarByIdAsync(System.String)">
+            <summary>
+            Gets a single calendar by platform-specific ID.
+            </summary>
+            <param name="externalId">Platform-specific calendar identifier</param>
+            <returns>The corresponding calendar, or null if not found</returns>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.Abstractions.ICalendars.GetEventsAsync(Plugin.Calendars.Abstractions.Calendar,System.DateTime,System.DateTime)">
+            <summary>
+            Gets all events for a calendar within the specified time range.
+            </summary>
+            <param name="calendar">Calendar containing events</param>
+            <param name="start">Start of event range</param>
+            <param name="end">End of event range</param>
+            <returns>Calendar events</returns>
+            <exception cref="T:System.ArgumentException">Calendar does not exist on device</exception>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.Abstractions.ICalendars.GetEventByIdAsync(System.String)">
+            <summary>
+            Gets a single calendar event by platform-specific ID.
+            </summary>
+            <param name="externalId">Platform-specific calendar event identifier</param>
+            <returns>The corresponding calendar event, or null if not found</returns>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.Abstractions.ICalendars.AddOrUpdateCalendarAsync(Plugin.Calendars.Abstractions.Calendar)">
+            <summary>
+            Creates a new calendar or updates the name and color of an existing one.
+            </summary>
+            <param name="calendar">The calendar to create/update</param>
+            <exception cref="T:System.ArgumentException">Calendar does not exist on device or is read-only</exception>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:System.InvalidOperationException">No active calendar sources available to create calendar on (iOS-only)</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.Abstractions.ICalendars.AddOrUpdateEventAsync(Plugin.Calendars.Abstractions.Calendar,Plugin.Calendars.Abstractions.CalendarEvent)">
+            <summary>
+            Add new event to a calendar or update an existing event.
+            </summary>
+            <param name="calendar">Destination calendar</param>
+            <param name="calendarEvent">Event to add or update</param>
+            <exception cref="T:System.ArgumentException">Calendar is not specified, does not exist on device, or is read-only</exception>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.Abstractions.ICalendars.DeleteCalendarAsync(Plugin.Calendars.Abstractions.Calendar)">
+            <summary>
+            Removes a calendar and all its events from the system.
+            </summary>
+            <param name="calendar">Calendar to delete</param>
+            <returns>True if successfully removed</returns>
+            <exception cref="T:System.ArgumentException">Calendar is read-only</exception>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.Abstractions.ICalendars.DeleteEventAsync(Plugin.Calendars.Abstractions.Calendar,Plugin.Calendars.Abstractions.CalendarEvent)">
+            <summary>
+            Removes an event from the specified calendar.
+            </summary>
+            <param name="calendar">Calendar to remove event from</param>
+            <param name="calendarEvent">Event to remove</param>
+            <returns>True if successfully removed</returns>
+            <exception cref="T:System.ArgumentException">Calendar is read-only</exception>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.Abstractions.ICalendars.AddEventReminderAsync(Plugin.Calendars.Abstractions.CalendarEvent,Plugin.Calendars.Abstractions.CalendarEventReminder)">
+            <summary>
+            iOS/Android: Adds a reminder to the specified calendar event
+            Windows: Sets/replaces the reminder for the specified calendar event
+            </summary>
+            <param name="calendarEvent">Event to add</param>
+            <param name="reminder">Reminder to add</param>
+            <returns>If successful</returns>
+            <exception cref="T:System.ArgumentException">Calendar event is not created or not valid</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="T:Plugin.Calendars.Abstractions.ICalendarsExtensions">
+            <summary>
+            Platform-agnostic convenience functions
+            </summary>
+        </member>
+        <member name="M:Plugin.Calendars.Abstractions.ICalendarsExtensions.CreateCalendarAsync(Plugin.Calendars.Abstractions.ICalendars,System.String,System.String)">
+            <summary>
+            Creates a new calendar with the specified name and optional color.
+            (just a convenience wrapper around AddOrUpdateCalendarAsync)
+            </summary>
+            <param name="api">ICalendars instance to extend</param>
+            <param name="calendarName">Calendar name</param>
+            <param name="color">Preferred color, or null to accept default</param>
+            <returns>The created calendar</returns>
+        </member>
+        <member name="T:Plugin.Calendars.Abstractions.PlatformException">
+            <summary>
+            Simple wrapper for iOS NSErrorExceptions and Android Java.Lang.Exception,
+            to make it easier to catch them in PCL.
+            </summary>
+        </member>
+        <member name="M:Plugin.Calendars.Abstractions.PlatformException.#ctor(System.String,System.Exception)">
+            <summary>
+            Creates a platform exception
+            </summary>
+            <param name="message">Error description</param>
+            <param name="innerException">Original platform-specific exception</param>
+        </member>
+    </members>
+</doc>

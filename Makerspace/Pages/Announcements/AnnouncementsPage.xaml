@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="Makerspace.AnnouncementsPage"
+		Title="Announcements">
+	<ContentPage.Content>
+		
+		<TableView Intent="Menu" HasUnevenRows="true">
+	
+		<TableSection Title="Announcements" >
+			<ViewCell x:Name="primaryAnnouncementCell" Height="100" IsEnabled="false">
+			<StackLayout Orientation="Horizontal" Padding="10,10,10,10">
+						<ActivityIndicator x:Name="AnnouncementsIsloading" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="Gray" />
+				<StackLayout>
+					<Label x:Name="AnnouncementTitle" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>	
+					<Label x:Name="AnnouncementText" FontSize="Small" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>	
+				</StackLayout>
+            </StackLayout>
+			</ViewCell>
+        </TableSection>
+
+		<TableSection Title="Social - #UTDallas" >
+			<ViewCell Height="350">
+			<StackLayout Orientation="Horizontal">
+                   <ListView x:Name="TwitterListView" IsRefreshing="true"  HasUnevenRows="true" ItemTapped="Handle_ItemTapped">
+
+					<ListView.ItemTemplate>
+
+					<DataTemplate>
+
+					<ViewCell Height="150">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,5,15,5">
+
+						<StackLayout HorizontalOptions="FillAndExpand" Padding="0,0,0,0">
+						    <Label Text="{Binding user.name}" VerticalOptions="FillAndExpand" FontSize="Large"/>
+							 <Label Text="{Binding text}" VerticalOptions="FillAndExpand" TextColor="Gray" FontSize="Small"/>
+                             <Label Text="{Binding user.screen_name}" VerticalOptions="FillAndExpand" TextColor="Teal" FontSize="Small"/>
+						</StackLayout>
+											
+                     </StackLayout>
+						</ViewCell>	
+								
+                     </DataTemplate>
+			</ListView.ItemTemplate>
+				</ListView> 
+            </StackLayout>
+			</ViewCell>
+        </TableSection>
+
+			
+        </TableView>
+		
+	</ContentPage.Content>
+</ContentPage>

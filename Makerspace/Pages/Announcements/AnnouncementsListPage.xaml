@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="Makerspace.AnnouncementsListPage"
+		Title="Announcements Page">
+	<ContentPage.Content>
+
+		 <ListView x:Name="AnnouncementsListView" HasUnevenRows="true" SeparatorVisibility="Default">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell >
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand"  Padding="10,5,10,5" Spacing="10">
+							<StackLayout>
+							<Label Text="{Binding publisher}" TextColor="Black" FontSize="Medium" FontAttributes="Bold" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" />
+							 <Label Text="{Binding text}"  TextColor="Black" FontSize="Small" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" />
+                             <Label Text="{Binding prettyDate}" TextColor="Gray" FontSize="Small"/>
+							</StackLayout>
+
+                        </StackLayout>
+						
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+			
+
+		
+	</ContentPage.Content>
+</ContentPage>
+

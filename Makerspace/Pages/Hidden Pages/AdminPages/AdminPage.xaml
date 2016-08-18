@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="Makerspace.AdminPage"
+		Title="Admin Panel">
+	<ContentPage.Content>
+			<TableView x:Name="infotable" Intent="Settings">
+    <TableRoot>
+		<TableSection Title = "Admin Commands">
+			<ImageCell x:Name="AddTab" Text="Add Event" />
+			<ImageCell x:Name="DeleteTab" Text="Delete Event" />
+			<ImageCell x:Name="NotifyTab" Text="Send Push Notification" />
+		</TableSection>
+    </TableRoot>
+</TableView>
+	</ContentPage.Content>
+</ContentPage>

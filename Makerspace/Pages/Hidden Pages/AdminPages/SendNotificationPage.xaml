@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="Makerspace.SendNotificationPage">
+	<ContentPage.Content>
+		<TableView Intent="Settings" HasUnevenRows="true">
+			<TableSection Title="Notification Message" >
+				<ViewCell Height="200" >
+                <StackLayout Orientation="Vertical" Spacing="2">
+                    <Editor x:Name="messageEditor" VerticalOptions="FillAndExpand" TextColor="Black" />
+                </StackLayout>
+          	 </ViewCell>
+			</TableSection>
+			
+			<TableSection>
+				<TextCell Text="Send!" Tapped="Handle_Tapped"/>
+			</TableSection>
+		</TableView>
+	</ContentPage.Content>
+</ContentPage>

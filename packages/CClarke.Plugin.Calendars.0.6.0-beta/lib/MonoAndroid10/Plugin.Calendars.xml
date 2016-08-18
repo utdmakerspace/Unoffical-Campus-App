@@ -1,0 +1,199 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Plugin.Calendars</name>
+    </assembly>
+    <members>
+        <member name="T:Plugin.Calendars.CrossCalendars">
+            <summary>
+            Cross platform Calendars implemenations
+            </summary>
+        </member>
+        <member name="P:Plugin.Calendars.CrossCalendars.Current">
+            <summary>
+            Current settings to use
+            </summary>
+        </member>
+        <member name="T:Plugin.Calendars.CalendarsImplementation">
+            <summary>
+            Implementation for Calendars
+            </summary>
+        </member>
+        <member name="P:Plugin.Calendars.CalendarsImplementation.AccountName">
+            <summary>
+            Gets or sets the name of the account to use for creating/editing calendars.
+            Defaults to application package label.
+            </summary>
+            <value>The name of the account.</value>
+        </member>
+        <member name="P:Plugin.Calendars.CalendarsImplementation.OwnerAccount">
+            <summary>
+            Gets or sets the owner account to use for creating/editing calendars.
+            Defaults to application package label.
+            </summary>
+            <value>The owner account.</value>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Plugin.Calendars.CalendarsImplementation"/> class.
+            </summary>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.GetCalendarsAsync">
+            <summary>
+            Gets a list of all calendars on the device.
+            </summary>
+            <returns>Calendars</returns>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.GetCalendarByIdAsync(System.String)">
+            <summary>
+            Gets a single calendar by platform-specific ID.
+            </summary>
+            <param name="externalId">Platform-specific calendar identifier</param>
+            <returns>The corresponding calendar, or null if not found</returns>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.GetEventsAsync(Plugin.Calendars.Abstractions.Calendar,System.DateTime,System.DateTime)">
+            <summary>
+            Gets all events for a calendar within the specified time range.
+            </summary>
+            <param name="calendar">Calendar containing events</param>
+            <param name="start">Start of event range</param>
+            <param name="end">End of event range</param>
+            <returns>Calendar events</returns>
+            <exception cref="T:System.ArgumentException">Calendar does not exist on device</exception>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.GetEventByIdAsync(System.String)">
+            <summary>
+            Gets a single calendar event by platform-specific ID.
+            </summary>
+            <param name="externalId">Platform-specific calendar event identifier</param>
+            <returns>The corresponding calendar event, or null if not found</returns>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.AddOrUpdateCalendarAsync(Plugin.Calendars.Abstractions.Calendar)">
+            <summary>
+            Creates a new calendar or updates the name and color of an existing one.
+            </summary>
+            <param name="calendar">The calendar to create/update</param>
+            <exception cref="T:System.ArgumentException">Calendar does not exist on device or is read-only</exception>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.AddOrUpdateEventAsync(Plugin.Calendars.Abstractions.Calendar,Plugin.Calendars.Abstractions.CalendarEvent)">
+            <summary>
+            Add new event to a calendar or update an existing event.
+            </summary>
+            <param name="calendar">Destination calendar</param>
+            <param name="calendarEvent">Event to add or update</param>
+            <exception cref="T:System.ArgumentException">Calendar is not specified, does not exist on device, or is read-only</exception>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.AddEventReminderAsync(Plugin.Calendars.Abstractions.CalendarEvent,Plugin.Calendars.Abstractions.CalendarEventReminder)">
+            <summary>
+            Adds an event reminder to specified calendar event
+            </summary>
+            <param name="calendarEvent">Event to add the reminder to</param>
+            <param name="reminder">The reminder</param>
+            <returns>If successful</returns>
+            <exception cref="T:System.ArgumentException">Calendar event is not created or not valid</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.DeleteCalendarAsync(Plugin.Calendars.Abstractions.Calendar)">
+            <summary>
+            Removes a calendar and all its events from the system.
+            </summary>
+            <param name="calendar">Calendar to delete</param>
+            <returns>True if successfully removed</returns>
+            <exception cref="T:System.ArgumentException">Calendar is read-only</exception>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.DeleteEventAsync(Plugin.Calendars.Abstractions.Calendar,Plugin.Calendars.Abstractions.CalendarEvent)">
+            <summary>
+            Removes an event from the specified calendar.
+            </summary>
+            <param name="calendar">Calendar to remove event from</param>
+            <param name="calendarEvent">Event to remove</param>
+            <returns>True if successfully removed</returns>
+            <exception cref="T:System.ArgumentException">Calendar is read-only</exception>
+            <exception cref="T:System.UnauthorizedAccessException">Calendar access denied</exception>
+            <exception cref="T:Plugin.Calendars.Abstractions.PlatformException">Unexpected platform-specific error</exception>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.Insert(Android.Net.Uri,Android.Content.ContentValues)">
+            <summary>
+            Returns ID of new item
+            </summary>
+        </member>
+        <member name="T:Plugin.Calendars.CursorExtensions">
+            <summary>
+            Cursor extensions.
+            </summary>
+        </member>
+        <member name="M:Plugin.Calendars.CursorExtensions.GetString(Android.Database.ICursor,System.String)">
+            <summary>
+            Returns the value of the requested column as a string.
+            </summary>
+            <returns>The string.</returns>
+            <param name="cursor">Cursor.</param>
+            <param name="column">Column name.</param>
+        </member>
+        <member name="M:Plugin.Calendars.CursorExtensions.GetInt(Android.Database.ICursor,System.String)">
+            <summary>
+            Returns the value of the requested column as an int.
+            </summary>
+            <returns>The int.</returns>
+            <param name="cursor">Cursor.</param>
+            <param name="column">Column name.</param>
+        </member>
+        <member name="M:Plugin.Calendars.CursorExtensions.GetLong(Android.Database.ICursor,System.String)">
+            <summary>
+            Returns the value of the requested column as a long.
+            </summary>
+            <returns>The long.</returns>
+            <param name="cursor">Cursor.</param>
+            <param name="column">Column name.</param>
+        </member>
+        <member name="M:Plugin.Calendars.CursorExtensions.GetDateTime(Android.Database.ICursor,System.String,System.Boolean)">
+            <summary>
+            Returns the value of the requested column as a DateTime
+            </summary>
+            <returns>The DateTime.</returns>
+            <param name="cursor">Cursor.</param>
+            <param name="column">Column name.</param>
+        </member>
+        <member name="M:Plugin.Calendars.CursorExtensions.GetBoolean(Android.Database.ICursor,System.String)">
+            <summary>
+            Returns the value of the requested column as a boolean.
+            </summary>
+            <returns>The boolean.</returns>
+            <param name="cursor">Cursor.</param>
+            <param name="column">Column name.</param>
+        </member>
+        <member name="T:Plugin.Calendars.DateConversions">
+            <summary>
+            Date conversion helpers.
+            </summary>
+        </member>
+        <member name="M:Plugin.Calendars.DateConversions.GetDateAsAndroidMS(System.DateTime)">
+            <summary>
+            Converts a System.DateTime to an Android-expected long of milliseconds since 1970.
+            </summary>
+            <returns>The date as Android long value.</returns>
+            <param name="date">Source DateTime.</param>
+        </member>
+        <member name="M:Plugin.Calendars.DateConversions.GetDateFromAndroidMS(System.Int64)">
+            <summary>
+            Converts an Android long value of milliseconds since 1970 to a System.DateTime
+            </summary>
+            <returns>The System.DateTime.</returns>
+            <param name="ms">Source date as milliseconds since 1970.</param>
+        </member>
+    </members>
+</doc>

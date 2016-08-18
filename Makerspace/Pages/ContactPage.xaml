@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="Makerspace.ContactPage">
+	<ContentPage.Content>
+
+		<TableView HasUnevenRows="true" Intent="Settings">
+		 <TableRoot>
+
+		<TableSection Title = "Timings">
+			<ViewCell Height="40">
+				<StackLayout>
+
+					<StackLayout Orientation="Horizontal" Padding="10,10,20,0">
+					<Label Text="Monday - Friday" FontAttributes="Bold" />
+					<Label Text="10:00AM -6:00 PM" HorizontalOptions="EndAndExpand"/>			
+					</StackLayout>
+
+				</StackLayout>
+			</ViewCell>		
+					
+			<ViewCell Height="40">
+				<StackLayout>
+
+					<StackLayout Orientation="Horizontal" Padding="10,10,20,0">
+					<Label Text="Saturday" FontAttributes="Bold"/>
+					<Label Text="10:00AM -4:00 PM" HorizontalOptions="EndAndExpand"/>			
+					</StackLayout>
+
+				</StackLayout>
+			</ViewCell>		
+
+			<ViewCell Height="40">
+				<StackLayout>
+
+					<StackLayout Orientation="Horizontal" Padding="10,10,20,0">
+					<Label Text="Sunday" FontAttributes="Bold" />
+					<Label Text="12:00PM -4:00 AM" HorizontalOptions="EndAndExpand" />			
+					</StackLayout>
+
+				</StackLayout>
+			</ViewCell>		
+
+			<ViewCell Height="40">
+				<StackLayout>
+
+					<StackLayout Orientation="Horizontal" Padding="10,10,20,0">
+					<Label Text="The Hub" FontAttributes="Bold" />
+					<Label Text="24/7" HorizontalOptions="EndAndExpand"/>			
+					</StackLayout>
+
+				</StackLayout>
+			</ViewCell>		
+		</TableSection>
+
+				
+		<TableSection Title = "Location">
+			<ViewCell Height="60">
+				<StackLayout  Padding="10,10,0,0" >
+							
+			<Label Text="3000 Waterview Parkway Richardson, TX 75080" FontSize="Medium" />		
+							
+			</StackLayout>
+						
+				</ViewCell>
+		
+		</TableSection>
+
+
+				
+			</TableRoot>
+
+		</TableView>
+	</ContentPage.Content>
+</ContentPage>

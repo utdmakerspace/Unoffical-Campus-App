@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+		x:Class="Makerspace.DiningPage"
+		Title = "Dining">
+	<ContentPage.Content>
+
+
+		 <ListView x:Name="DiningListView" HasUnevenRows="true" SeparatorVisibility="None" ItemTapped="Handle_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell x:Name = "cell" Height="90">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand"  Padding="20,5,10,5" Spacing="20">
+
+							<controls:CircleImage Source="{Binding image}" Aspect="AspectFit" HeightRequest="60" WidthRequest="60" 
+								HorizontalOptions="Center" VerticalOptions="Center" BorderColor="#C75B12" BorderThickness="2" />
+
+							<StackLayout HorizontalOptions="FillAndExpand" Spacing="5" VerticalOptions="CenterAndExpand">
+							 <Label Text="{Binding Name}"/>
+                             <Label Text="{Binding currentTimings}" TextColor="Gray" FontSize="Small"/>
+							</StackLayout>
+
+                        </StackLayout>
+						
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+			
+
+		
+	</ContentPage.Content>
+</ContentPage>

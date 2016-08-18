@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Plugin.Calendars</name>
+    </assembly>
+    <members>
+        <member name="T:Plugin.Calendars.CrossCalendars">
+            <summary>
+            Cross platform Calendars implemenations
+            </summary>
+        </member>
+        <member name="P:Plugin.Calendars.CrossCalendars.Current">
+            <summary>
+            Current settings to use
+            </summary>
+        </member>
+        <member name="T:Plugin.Calendars.CalendarsImplementation">
+            <summary>
+            Implementation for Calendars
+            </summary>
+            <remarks>Currently this entire implementation is just a wrapper around NotSupportedException,
+                     due to lack of access to a direct calendar API in Windows Store apps.</remarks>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.GetCalendarsAsync">
+            <summary>
+            Not supported for Windows Store apps
+            </summary>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.GetCalendarByIdAsync(System.String)">
+            <summary>
+            Not supported for Windows Store apps
+            </summary>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.GetEventsAsync(Plugin.Calendars.Abstractions.Calendar,System.DateTime,System.DateTime)">
+            <summary>
+            Not supported for Windows Store apps
+            </summary>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.GetEventByIdAsync(System.String)">
+            <summary>
+            Not supported for Windows Store apps
+            </summary>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.CreateCalendarAsync(System.String,System.String)">
+            <summary>
+            Not supported for Windows Store apps
+            </summary>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.AddOrUpdateCalendarAsync(Plugin.Calendars.Abstractions.Calendar)">
+            <summary>
+            Not supported for Windows Store apps
+            </summary>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.AddOrUpdateEventAsync(Plugin.Calendars.Abstractions.Calendar,Plugin.Calendars.Abstractions.CalendarEvent)">
+            <summary>
+            Not supported for Windows Store apps
+            </summary>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.AddEventReminderAsync(Plugin.Calendars.Abstractions.CalendarEvent,Plugin.Calendars.Abstractions.CalendarEventReminder)">
+            <summary>
+            Not supported for Windows Store apps
+            </summary>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.DeleteCalendarAsync(Plugin.Calendars.Abstractions.Calendar)">
+            <summary>
+            Not supported for Windows Store apps
+            </summary>
+        </member>
+        <member name="M:Plugin.Calendars.CalendarsImplementation.DeleteEventAsync(Plugin.Calendars.Abstractions.Calendar,Plugin.Calendars.Abstractions.CalendarEvent)">
+            <summary>
+            Not supported for Windows Store apps
+            </summary>
+        </member>
+    </members>
+</doc>

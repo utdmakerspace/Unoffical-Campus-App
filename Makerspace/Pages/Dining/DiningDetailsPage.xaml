@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+		xmlns:local="clr-namespace:Makerspace;assembly=Makerspace"
+		x:Class="Makerspace.DiningDetailsPage">
+	<ContentPage.Content>
+
+		
+
+		<StackLayout Spacing="0">
+
+	<RelativeLayout>
+
+    <BoxView Color="#C75B12" x:Name="BackgroundBox"
+             RelativeLayout.XConstraint=
+                 "{ConstraintExpression Type=RelativeToParent, 
+                                        Property=Width
+										,Factor=0}"
+             RelativeLayout.YConstraint=
+                 "{ConstraintExpression Type=Constant, 
+                                        Constant=0}" 
+
+			RelativeLayout.WidthConstraint = "{ConstraintExpression Type=RelativeToParent, 
+                                        Property=Width
+										,Factor=1}"
+				
+			RelativeLayout.HeightConstraint = "{ConstraintExpression 
+							Type=Constant, Constant=130}"/>	
+
+	<StackLayout  BackgroundColor="#C75B12" Padding="20,30,0,0" 
+				RelativeLayout.XConstraint=
+                 "{ConstraintExpression Type=RelativeToParent, 
+                                        Property=Width
+										,Factor=0}"
+             RelativeLayout.YConstraint=
+                 "{ConstraintExpression Type=Constant, 
+                                        Constant=0}" 
+
+			RelativeLayout.WidthConstraint = "{ConstraintExpression Type=RelativeToParent, 
+                                        Property=Width
+										,Factor=1}"
+				
+			RelativeLayout.HeightConstraint = "{ConstraintExpression 
+							Type=Constant, Constant=100}">
+				
+			<Label x:Name="TitleText" Text="Restraurant Name"  TextColor="White" FontSize="30" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+			<Label x:Name="ProcessedTimeText" Text="12:00AM - 12:00PM" TextColor="White" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"/>		
+	</StackLayout>
+
+	</RelativeLayout>
+
+			
+	<TableView x:Name="infotable" Intent="Menu" HasUnevenRows="true">
+
+	<TableRoot >
+
+					
+		<TableSection Title="Hours"> 
+			  <ViewCell Height="480">
+
+				<StackLayout Spacing="5">
+
+				  <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,10,0">
+							<BoxView BackgroundColor="#C75B12" WidthRequest="10" VerticalOptions="FillAndExpand"/>			
+						<StackLayout HorizontalOptions="FillAndExpand" Padding="20,10,5,10" >
+							 <Label Text="Monday" VerticalOptions="FillAndExpand"/>
+                             <Label x:Name= "MondayTime" Text="10:00 AM - 12:00 AM" VerticalOptions="EndAndExpand" TextColor="Gray" FontSize="Small"/>
+						</StackLayout>
+                     </StackLayout>
+					
+                  
+                  
+				
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,10,0">
+							<BoxView BackgroundColor="#C75B12" WidthRequest="10" VerticalOptions="FillAndExpand"/>			
+							<StackLayout HorizontalOptions="FillAndExpand" Padding="20,10,5,10" >
+							 <Label Text="Tuesday"  VerticalOptions="FillAndExpand"/>
+                             <Label x:Name= "TuesdayTime" Text="10:00 AM - 12:00 AM" VerticalOptions="EndAndExpand" TextColor="Gray" FontSize="Small"/>
+							</StackLayout>
+                       </StackLayout>
+
+						<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,10,0">
+							<BoxView BackgroundColor="#C75B12" WidthRequest="10" VerticalOptions="FillAndExpand"/>			
+							<StackLayout HorizontalOptions="FillAndExpand" Padding="20,10,5,10" >
+							 <Label Text="Wednesday"  VerticalOptions="FillAndExpand"/>
+                             <Label x:Name= "WednesdayTime" Text="10:00 AM - 12:00 AM" VerticalOptions="EndAndExpand" TextColor="Gray" FontSize="Small"/>
+							</StackLayout>
+                       </StackLayout>
+
+						<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,10,0">
+							<BoxView BackgroundColor="#C75B12" WidthRequest="10" VerticalOptions="FillAndExpand"/>			
+							<StackLayout HorizontalOptions="FillAndExpand" Padding="20,10,5,10" >
+							 <Label Text="Thursday"  VerticalOptions="FillAndExpand"/>
+                             <Label x:Name= "ThursdayTime" Text="10:00 AM - 12:00 AM" VerticalOptions="EndAndExpand" TextColor="Gray" FontSize="Small"/>
+							</StackLayout>
+                       </StackLayout>
+								
+						<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,10,0">
+							<BoxView BackgroundColor="#C75B12" WidthRequest="10" VerticalOptions="FillAndExpand"/>			
+							<StackLayout HorizontalOptions="FillAndExpand" Padding="20,10,5,10" >
+							 <Label Text="Friday"  VerticalOptions="FillAndExpand"/>
+                             <Label x:Name= "FridayTime" Text="10:00 AM - 12:00 AM" VerticalOptions="EndAndExpand" TextColor="Gray" FontSize="Small"/>
+							</StackLayout>
+                       </StackLayout>
+
+						<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,10,0">
+							<BoxView BackgroundColor="#C75B12" WidthRequest="10" VerticalOptions="FillAndExpand"/>			
+							<StackLayout HorizontalOptions="FillAndExpand" Padding="20,10,5,10" >
+							 <Label Text="Saturday"  VerticalOptions="FillAndExpand"/>
+                             <Label x:Name= "SaturdayTime" Text="10:00 AM - 12:00 AM" VerticalOptions="EndAndExpand" TextColor="Gray" FontSize="Small"/>
+							</StackLayout>
+                       </StackLayout>
+
+						<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,10,0">
+							<BoxView BackgroundColor="#C75B12" WidthRequest="10" VerticalOptions="FillAndExpand"/>			
+							<StackLayout HorizontalOptions="FillAndExpand" Padding="20,10,5,10" >
+							 <Label Text="Sunday"  VerticalOptions="FillAndExpand"/>
+                             <Label x:Name= "SundayTime" Text="10:00 AM - 12:00 AM" VerticalOptions="EndAndExpand" TextColor="Gray" FontSize="Small"/>
+							</StackLayout>
+                       </StackLayout>
+             </StackLayout>
+		</ViewCell>	
+
+						
+		</TableSection>
+
+					
+
+
+	
+
+
+
+
+
+    </TableRoot>
+		</TableView>
+	</StackLayout>
+
+
+
+		
+	</ContentPage.Content>
+</ContentPage>
