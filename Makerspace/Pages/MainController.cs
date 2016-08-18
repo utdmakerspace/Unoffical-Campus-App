@@ -13,7 +13,6 @@ namespace Makerspace
 			Children.Add(new NavigationPage(new EventsPage()) { Title = "Events", Icon = "tab_sessions" });
 			Children.Add(new NavigationPage(new InfoPage()){ Title = "Info", Icon="tab_about" });
 
-
 		}
 	}
 }
