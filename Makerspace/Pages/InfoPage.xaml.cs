@@ -15,6 +15,10 @@ namespace Makerspace
 			DiningTab.TextColor = Color.Black;
 
 
+
+			MapTab.Tapped += (sender, e) => { Navigation.PushAsync(new MapPage());};
+			MapTab.TextColor = Color.Black;
+
 			AdminTab.Tapped += (sender, e) => { Navigation.PushAsync(new LoginPage()); };
 			STMLoginTab.Tapped += (sender, e) => { Navigation.PushAsync(new LoginPage()); };
 

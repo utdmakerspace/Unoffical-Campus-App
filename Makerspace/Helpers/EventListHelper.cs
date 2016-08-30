@@ -19,6 +19,14 @@ namespace Makerspace
 			await EventsWriterHelper.pushChanges();
 		}
 
+		public static async Task addNewEvent(Session newEvent, int index)
+		{
+			var eventList = JsonConvert.DeserializeObject<List<Session>>(EventsWriterHelper.oldImage);
+			eventList.Insert(index, newEvent);
+			EventsWriterHelper.newImage = JsonConvert.SerializeObject(eventList);
+			await EventsWriterHelper.pushChanges();
+		}
+
 		public static async Task removeEvent(int eventIndex)
 		{
 			var eventList = JsonConvert.DeserializeObject<List<Session>>(EventsWriterHelper.oldImage);

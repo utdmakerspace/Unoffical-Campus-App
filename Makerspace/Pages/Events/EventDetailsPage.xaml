@@ -69,9 +69,14 @@
                     </ViewCell>
 		</TableSection>
 
-		<TableSection Title="Follow">
+		<TableSection x:Name="Actions" Title="Actions">
 			<ImageCell x:Name="AddTab" Text="Add To Calendar" Tapped="Handle_Tapped" TextColor="Teal"/>
+			<ImageCell x:Name="URLTab" Text="Open Link" Tapped="OpenUrl_Tapped" TextColor="Teal"/>		
 		</TableSection>	
+
+
+					
+
 					
 		<TableSection Title="Abstract"> 
 			<ViewCell Height="250">

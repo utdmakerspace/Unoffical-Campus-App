@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="Makerspace.CampusMapPage">
+	
+	<ContentPage.Content>
+
+		<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+			
+			<ActivityIndicator x:Name="load" Color="Gray" IsRunning="true" VerticalOptions="Center" HorizontalOptions="Center" />
+			
+			<WebView x:Name="browser" IsVisible="false" Navigating="Handle_Navigating" HeightRequest="100" WidthRequest="100" Navigated="Handle_Navigated" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+
+			
+		</StackLayout>
+
+
+	</ContentPage.Content>
+
+
+	
+</ContentPage>

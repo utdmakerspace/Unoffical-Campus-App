@@ -9,7 +9,8 @@
 
 		<TableSection Title="UTD Quick Links" >
 		<!--	<ImageCell x:Name="EmergencyTab" Text="Emergency Contacts" /> -->
-			<ImageCell x:Name="DiningTab" Text="UTD Dining Times" TextColor="Gray" />
+			<ImageCell x:Name="DiningTab" Text="UTD Dining Times" TextColor="Black" />
+		    <ImageCell x:Name="MapTab" Text="UTD Campus Map" TextColor="Black" />
         </TableSection>
 				
         <TableSection Title="Makerspace Info"  >

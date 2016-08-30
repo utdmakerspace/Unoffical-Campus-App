@@ -27,8 +27,17 @@ namespace Makerspace
 
 			//set colors
 			AddTab.TextColor = details.color;
+			URLTab.TextColor = details.color;
 			BackgroundBox.Color = details.color;
 			TextBackground.BackgroundColor = details.color;
+
+
+			if(details.url.Equals("placeholder"))
+			{
+
+				Actions.RemoveAt(1);
+
+			}
 
 
 		}
@@ -55,6 +64,10 @@ namespace Makerspace
 			return string.Format("{0}-{1}", startTime.ToString("f"), endTime.ToString("t"));
 		}
 
+		void OpenUrl_Tapped(object sender, System.EventArgs e)
+		{
+			Device.OpenUri(new Uri(thisEvent.url));
+		}
 
 		void Handle_Tapped(object sender, System.EventArgs e)
 		{

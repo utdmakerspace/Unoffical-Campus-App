@@ -15,6 +15,7 @@ namespace Makerspace
 		public string biography { get; set; }
 		public string image { get; set; } = "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRw7N10JPWrASTfN7e5eWzGQVm93nsv7GfUNhDf2P8_0lpdnUgSbDIBy8s"; //default comets image
 		public string room { get; set; }
+		public string url { get; set; } = "placeholder";
 		public int attendeeCount { get; set;}
 		public string theme { get; set;} = "#008080"; //Default color teal 
 

@@ -7,7 +7,8 @@ namespace Makerspace
 {
 	public partial class AddEventPage : ContentPage
 	{
-		bool CanGoBack = false;
+		
+
 		public AddEventPage()
 		{
 			InitializeComponent();
@@ -19,11 +20,6 @@ namespace Makerspace
 		}
 
 
-		protected override bool OnBackButtonPressed()
-		{
-			DisplayAlert("Hold up", "Still adding the event. I will automatically go back once done.", "I'll wait.");
-			return CanGoBack;
-		}
 
 		async void Handle_Tapped(object sender, System.EventArgs e)
 		{
@@ -56,11 +52,15 @@ namespace Makerspace
 					theme = themeEntry.Text
 				};
 
-				await EventListHelper.addNewEvent(session);
+				await Navigation.PushAsync(new PlaceEventPage(session));
+
+				/* await EventListHelper.addNewEvent(session);
 
 				await DisplayAlert("Great!", "Event added!", "Ok");
 				CanGoBack = true;
-				await Navigation.PopAsync();
+				await Navigation.PopAsync();*/
+
+
 			}
 
 		}

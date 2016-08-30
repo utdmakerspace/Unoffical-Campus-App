@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Flurl.Http;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace Makerspace
@@ -23,10 +24,10 @@ namespace Makerspace
 
 		protected async override void OnAppearing()
 		{
-			var eventsSource = await fetchJsonData();
+			var eventsSource = await EventsWriterHelper.getEventsList();
+			var parsedEvents = JsonConvert.DeserializeObject<ObservableCollection<Session>>(eventsSource);
 			Debug.WriteLine("Fetching Data");
-			EventsListView.ItemsSource = eventsSource;
-			Task.Run(async () => EventsWriterHelper.oldImage = await EventsWriterHelper.getEventsList());
+			EventsListView.ItemsSource = parsedEvents;
 			base.OnAppearing();
 			EventsListView.IsRefreshing = false;
 		}
@@ -39,10 +40,7 @@ namespace Makerspace
 		}
 
 
-		public async Task<ObservableCollection<Session>> fetchJsonData()
-		{
-			return await "https://s3.amazonaws.com/utdmakerspace/events.json".GetJsonAsync<ObservableCollection<Session>>();
-		}
+
 
 	}
 }
