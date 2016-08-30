@@ -6,3 +6,4 @@ Makerspace/Static/Keys.cs
 bin/
 obj/
 *.userprefs
+*.ipa
