@@ -85,15 +85,24 @@ namespace Makerspace
 						Location = thisEvent.room,
 						Name = thisEvent.title,
 						ExternalID = "makerspace"
+
 					};
 
-					await EventListHelper.incrementAttendeeCount();
+					var eventReminder = new CalendarEventReminder()
+					{
+						TimeBefore = new TimeSpan(0, 15, 0)
+					};
+
 
 					try
 					{
 						var localCalendar = await GetOrCreateMakerCalendarAsync();
 
 						await CrossCalendars.Current.AddOrUpdateEventAsync(localCalendar, eventDetails);
+						await CrossCalendars.Current.AddEventReminderAsync(eventDetails, eventReminder);
+
+
+
 
 						await DisplayAlert("Done!", "Added to Calendar", "Yay!");
 
@@ -178,6 +187,7 @@ namespace Makerspace
 			var makerCalendar = new Calendar();
 			makerCalendar.Color = "#7635EB";
 			makerCalendar.Name = "Makerspace Calendar";
+
 			makerCalendar.ExternalID = id;
 
 			try
