@@ -49,8 +49,14 @@ namespace Makerspace
 					title = titleEntry.Text,
 					room = roomEntry.Text,
 					image = imageEntry.Text,
-					theme = themeEntry.Text
+
 				};
+
+				if(string.IsNullOrEmpty(themeEntry.Text))
+				{
+					session.theme = themeEntry.Text;
+				}
+
 
 				await Navigation.PushAsync(new PlaceEventPage(session));
 
