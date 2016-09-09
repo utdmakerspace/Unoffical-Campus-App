@@ -14,7 +14,7 @@ namespace Makerspace
 			"\n\nExhibitors in the halls, and sponsors or vendor booths, or similar activities are also subject to this code of conduct. In particular, exhibitors should not use sexualized images, activities, or other material. Booth staff (including volunteers) should not use sexualized clothing/uniforms/costumes, or otherwise create a sexualized environment." +
 			"\n\nIf you are being harassed, notice that someone else is being harassed, or have any other concerns, please contact a member of conference staff immediately. Makerspae staff can be identified by t-shirts or with this App" +
 			"\n\nMakerspace staff will be happy to help participants contact security or local law enforcement, provide escorts, or otherwise assist those experiencing harassment to feel safe for the duration of events" +
-			"\n\nWe thank our users, speakers and exhibitors for their help in keeping the Makersapce welcoming, respectful, and friendly to all participants.";
+			"\n\nWe thank our users, speakers and exhibitors for their help in keeping the Makerspace welcoming, respectful, and friendly to all participants.";
 		
 		public CodeOfConductPage()
 		{
